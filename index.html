@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Stephen Appiah Portfolio</title>
+</head>
+<body>
+
+    <div class="splash-page" id="splashPage">
+        <canvas class="splash-canvas" id="splashCanvas"></canvas>
+        <div class="splash-content">
+            <img class="splash-photo" src="image/profile1.jpg" alt="Stephen Appiah profile photo">
+            <p class="splash-label">Welcome to my portfolio</p>
+            <h1>Stephen Appiah</h1>
+            <p>Software Development, Networking, and IT Infrastructure</p>
+            <button id="enterSite" type="button">Enter Portfolio</button>
+        </div>
+    </div>
+
+    <nav>
+        <h2>Stephen Appiah</h2>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img class="profile-pic" src="image/profile1.jpg" alt="Stephen Appiah profile photo">
+        <h1>Hi, I'm Stephen Appiah 👋</h1>
+<p>
+    Computer Science Student specializing in Software Development,
+    Networking, and IT Infrastructure.
+</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a Computer Science student passionate about software development,
+            networking, and hardware technologies. I enjoy building applications
+            and learning new technologies.
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+<div class="project-card">
+    <h3>Bus Ticket Booking App</h3>
+    <p>
+        Android application developed using Java and Android Studio
+        for booking bus tickets and managing reservations.
+    </p>
+</div>
+
+<div class="project-card">
+    <h3>Windows Server Lab</h3>
+    <p>
+        Configured Windows Server 2012 R2 with Active Directory,
+        DNS, and user management.
+    </p>
+</div>
+
+<div class="project-card">
+    <h3>Networking Project</h3>
+    <p>
+        Designed and tested network configurations and connectivity
+        within a virtual lab environment.
+    </p>
+</div>
+
+<div class="project-card">
+     <h3>Campus Smart-Chart System</h3>
+    <p>
+        A mobile application developed using Node.js and React Native
+        to provide real-time information about campus facilities and events in tertiary institutions.
+    </p>
+
+</div>
+   
+<div class="project-card">
+    <h3>Law Firm</h3>
+
+    <p>
+        A web application developed using Node.js and React to manage
+        client information, case details, and appointments for a law firm.
+
+    </p>
+
+</div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Java</li>
+            <li>React Native</li>
+            <li>Node.js</li>
+            <li>HTML & CSS</li>
+            <li>Networking</li>
+            <li>Git & GitHub</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-links">
+            <a href="mailto:Steappiah11@gmail.com">Email Me</a>
+            <a href="https://github.com/Yarobest" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        </div>
+    </section>
+
+    <script>
+        const splashPage = document.getElementById("splashPage");
+        const enterSite = document.getElementById("enterSite");
+        const splashCanvas = document.getElementById("splashCanvas");
+        const splashContext = splashCanvas.getContext("2d");
+        let particles = [];
+
+        enterSite.addEventListener("click", function () {
+            splashPage.classList.add("hide-splash");
+        });
+
+        function resizeSplashCanvas() {
+            splashCanvas.width = window.innerWidth;
+            splashCanvas.height = window.innerHeight;
+            createParticles();
+        }
+
+        function createParticles() {
+            const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 18000);
+            particles = [];
+
+            for (let index = 0; index < particleCount; index++) {
+                particles.push({
+                    x: Math.random() * splashCanvas.width,
+                    y: Math.random() * splashCanvas.height,
+                    radius: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 0.8,
+                    speedY: (Math.random() - 0.5) * 0.8
+                });
+            }
+        }
+
+        function animateSplashBackground() {
+            splashContext.clearRect(0, 0, splashCanvas.width, splashCanvas.height);
+
+            particles.forEach(function (particle, index) {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+
+                if (particle.x < 0 || particle.x > splashCanvas.width) {
+                    particle.speedX *= -1;
+                }
+
+                if (particle.y < 0 || particle.y > splashCanvas.height) {
+                    particle.speedY *= -1;
+                }
+
+                splashContext.beginPath();
+                splashContext.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                splashContext.fillStyle = "rgba(212, 175, 55, 0.9)";
+                splashContext.fill();
+
+                for (let nextIndex = index + 1; nextIndex < particles.length; nextIndex++) {
+                    const nextParticle = particles[nextIndex];
+                    const distanceX = particle.x - nextParticle.x;
+                    const distanceY = particle.y - nextParticle.y;
+                    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                    if (distance < 130) {
+                        splashContext.beginPath();
+                        splashContext.moveTo(particle.x, particle.y);
+                        splashContext.lineTo(nextParticle.x, nextParticle.y);
+                        splashContext.strokeStyle = `rgba(255, 255, 255, ${0.18 - distance / 900})`;
+                        splashContext.lineWidth = 1;
+                        splashContext.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animateSplashBackground);
+        }
+
+        window.addEventListener("resize", resizeSplashCanvas);
+        resizeSplashCanvas();
+        animateSplashBackground();
+    </script>
+</body>
+</html>
