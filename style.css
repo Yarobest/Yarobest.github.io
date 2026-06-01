@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     min-height: 100%;
     background:
@@ -10,8 +14,9 @@ html {
 }
 
 body {
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    max-width: 900px;
+    width: min(100%, 980px);
     margin: 0 auto;
     padding: 20px;
     background: transparent;
@@ -53,6 +58,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
     padding: 20px;
     background: #182536;
     color: white;
@@ -74,7 +80,7 @@ body::after {
 }
 
 .splash-content {
-    max-width: 520px;
+    max-width: 680px;
     position: relative;
     z-index: 1;
     width: 100%;
@@ -296,17 +302,23 @@ nav a:hover {
 
 @media (max-width: 650px) {
     body {
-        padding: 14px;
+        width: 100%;
+        padding: 12px;
         font-size: 20px;
     }
 
     .splash-page {
+        min-height: 100svh;
         padding: 24px;
     }
 
+    .splash-content {
+        max-width: 100%;
+    }
+
     .splash-photo {
-        width: min(72vw, 360px);
-        height: min(72vw, 360px);
+        width: min(78vw, 380px);
+        height: min(78vw, 380px);
         border-width: 7px;
         margin-bottom: 34px;
     }
@@ -316,24 +328,30 @@ nav a:hover {
     }
 
     .splash-content h1 {
-        font-size: 64px;
+        font-size: clamp(52px, 15vw, 76px);
         line-height: 1.05;
     }
 
     .splash-content p {
-        font-size: 24px;
+        font-size: clamp(22px, 6vw, 30px);
     }
 
     .splash-content button {
         width: 100%;
-        max-width: 380px;
-        padding: 20px 28px;
-        font-size: 24px;
+        max-width: 420px;
+        padding: 22px 28px;
+        font-size: 26px;
     }
 
     nav ul {
         flex-wrap: wrap;
         gap: 12px;
+    }
+
+    section,
+    nav {
+        border-radius: 14px;
+        padding: 22px;
     }
 
     .hero {
