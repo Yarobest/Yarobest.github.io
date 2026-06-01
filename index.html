@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Stephen Appiah Portfolio</title>
 </head>
-<body>
+<body class="splash-active">
 
     <div class="splash-page" id="splashPage">
         <canvas class="splash-canvas" id="splashCanvas"></canvas>
@@ -122,6 +122,7 @@
 
         enterSite.addEventListener("click", function () {
             splashPage.classList.add("hide-splash");
+            document.body.classList.remove("splash-active");
         });
 
         function resizeSplashCanvas() {
