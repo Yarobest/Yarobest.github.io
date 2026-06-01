@@ -16,6 +16,7 @@ body {
     padding: 20px;
     background: transparent;
     color: #243447;
+    font-size: 18px;
     line-height: 1.6;
 }
 
@@ -125,12 +126,14 @@ body::after {
 
 h1 {
     color: #2c3e50;
+    font-size: 42px;
 }
 
 h2 {
     color: #34495e;
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
+    font-size: 30px;
 }
 
 section {
@@ -156,6 +159,7 @@ nav h2 {
     margin: 0;
     border: none;
     color: white;
+    font-size: 28px;
 }
 
 nav ul {
@@ -168,6 +172,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: white;
+    font-size: 18px;
 }
 
 nav a:hover {
@@ -184,12 +189,12 @@ nav a:hover {
 
 .hero h1 {
     margin-top: 0;
-    font-size: 34px;
+    font-size: 46px;
 }
 
 .hero p {
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 22px;
     color: #46576a;
 }
 
@@ -218,6 +223,14 @@ nav a:hover {
     box-shadow: 0 14px 30px rgba(24, 37, 54, 0.14);
 }
 
+.project-card h3 {
+    font-size: 24px;
+}
+
+.project-card p {
+    font-size: 19px;
+}
+
 #skills ul {
     list-style: none;
     display: flex;
@@ -233,6 +246,7 @@ nav a:hover {
     border: 1px solid rgba(212, 175, 55, 0.36);
     border-radius: 999px;
     color: #243447;
+    font-size: 18px;
     font-weight: bold;
     box-shadow: 0 6px 16px rgba(24, 37, 54, 0.06);
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
@@ -255,6 +269,7 @@ nav a:hover {
     padding: 12px 18px;
     background: #2c3e50;
     color: white;
+    font-size: 18px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
@@ -282,34 +297,38 @@ nav a:hover {
 @media (max-width: 650px) {
     body {
         padding: 14px;
+        font-size: 20px;
     }
 
     .splash-page {
-        padding: 28px;
+        padding: 24px;
     }
 
     .splash-photo {
-        width: 190px;
-        height: 190px;
+        width: min(72vw, 360px);
+        height: min(72vw, 360px);
+        border-width: 7px;
+        margin-bottom: 34px;
     }
 
     .splash-label {
-        font-size: 17px;
+        font-size: 24px;
     }
 
     .splash-content h1 {
-        font-size: 40px;
+        font-size: 64px;
+        line-height: 1.05;
     }
 
     .splash-content p {
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .splash-content button {
         width: 100%;
-        max-width: 300px;
-        padding: 15px 24px;
-        font-size: 18px;
+        max-width: 380px;
+        padding: 20px 28px;
+        font-size: 24px;
     }
 
     nav ul {
@@ -327,6 +346,24 @@ nav a:hover {
     }
 
     .hero h1 {
-        font-size: 28px;
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .project-card h3 {
+        font-size: 26px;
+    }
+
+    .project-card p,
+    #skills li,
+    .contact-links a {
+        font-size: 20px;
     }
 }
